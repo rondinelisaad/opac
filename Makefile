@@ -60,7 +60,7 @@ travis_compose_up:
 	@docker-compose -f $(COMPOSE_FILE_BUILD) up -d
 
 travis_compose_make_test:
-	@docker-compose -f $(COMPOSE_FILE_BUILD) exec opac_webapp make test
+        @docker exec opac_opac_webapp_1 bash -c "make test"
 
 travis_run_audit:
 	@docker run \
