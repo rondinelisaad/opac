@@ -20,12 +20,10 @@ script:
 - make travis_run_audit
 
 after_success:
-- if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_EVENT_TYPE" == "push" ]; then
-  docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" "$DOCKER_REGISTRY_SCIELO";
-  make release_docker_build;
-  make release_docker_tag;
-  make release_docker_push;
-  fi
+- docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" "$DOCKER_REGISTRY_SCIELO"
+- make release_docker_build
+- make release_docker_tag
+- make release_docker_push
 
 notifications:
   slack: scielo:6YcYDMh1STDOQT8H7umVuD0R
