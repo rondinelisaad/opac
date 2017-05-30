@@ -23,8 +23,8 @@ script:
 
 after_success:
 - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" "$DOCKER_REGISTRY_SCIELO"
-- docker build -t $(DOCKER_REGISTRY_SCIELO)/$(TEAM)/$(REPO_NAME):latest .
-- docker push $(DOCKER_REGISTRY_SCIELO)/$(TEAM)/$(REPO_NAME):latest
+- docker build -t "$DOCKER_REGISTRY_SCIELO"/"$TEAM"/"$REPO_NAME":latest .
+- docker push "$DOCKER_REGISTRY_SCIELO"/"$TEAM"/"$REPO_NAME":latest
 
 notifications:
   slack: scielo:6YcYDMh1STDOQT8H7umVuD0R
