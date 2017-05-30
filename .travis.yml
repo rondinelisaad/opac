@@ -5,7 +5,9 @@ language: python
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
-
+  - TEAM=scieloorg
+  - REPO_NAME=opac
+  
 services:
 - docker
 
@@ -21,9 +23,8 @@ script:
 
 after_success:
 - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" "$DOCKER_REGISTRY_SCIELO"
-- make release_docker_build
-- make release_docker_tag
-- make release_docker_push
+- docker build -t $(DOCKER_REGISTRY_SCIELO)/$(TEAM)/$(REPO_NAME):latest .
+- docker push $(DOCKER_REGISTRY_SCIELO)/$(TEAM)/$(REPO_NAME):latest
 
 notifications:
   slack: scielo:6YcYDMh1STDOQT8H7umVuD0R
