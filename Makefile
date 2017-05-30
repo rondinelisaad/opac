@@ -62,16 +62,16 @@ travis_compose_up:
 travis_compose_make_test:
 	@docker-compose -f $(COMPOSE_FILE_BUILD) exec -T opac_webapp make test
 
-travis_run_audit:
-	@docker run \
-	-it --net host --pid host \
-	--cap-add audit_control \
-	-v /var/lib:/var/lib \
-  	-v /var/run/docker.sock:/var/run/docker.sock \
-  	-v /usr/lib/systemd:/usr/lib/systemd \
-  	-v /etc:/etc \
-  	--label docker_bench_security \
-  	docker/docker-bench-security
+#travis_run_audit:
+#	@docker run \
+#	-it --net host --pid host \
+#	--cap-add audit_control \
+#	-v /var/lib:/var/lib \
+#  	-v /var/run/docker.sock:/var/run/docker.sock \
+#  	-v /usr/lib/systemd:/usr/lib/systemd \
+#  	-v /etc:/etc \
+# 	--label docker_bench_security \
+#  	docker/docker-bench-security
 
 ###########################################################
 ## atalhos docker-compose build e push para o Docker Hub ##
