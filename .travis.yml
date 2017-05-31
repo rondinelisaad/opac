@@ -5,8 +5,6 @@ language: python
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
-  - TEAM=scieloorg
-  - REPO_NAME=opac
   
 services:
 - docker
